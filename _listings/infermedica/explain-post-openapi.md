@@ -1,0 +1,95 @@
+---
+swagger: "2.0"
+x-collection-name: Infermedica
+x-complete: 0
+info:
+  title: Infermedica Post Explain
+  description: Explains which evidence impact probability of selected condition.
+  version: v2
+host: api.infermedica.com
+basePath: /v1
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /conditions:
+    get:
+      summary: Get Conditions
+      description: Returns a list of all available conditions.
+      operationId: getConditions
+      x-api-path-slug: conditions-get
+      responses:
+        200:
+          description: OK
+      tags:
+      - Healthcare
+      - Conditions
+  /conditions/{id}:
+    get:
+      summary: Get Conditions
+      description: Returns details of a single condition specified by id parameter.
+      operationId: getConditions
+      x-api-path-slug: conditionsid-get
+      parameters:
+      - in: path
+        name: id
+        description: condition id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Healthcare
+      - Conditions
+      - Id
+  /diagnosis:
+    post:
+      summary: Post Diagnosis
+      description: Suggests possible diagnoses and relevant observations based on
+        provided patient information.
+      operationId: postDiagnosis
+      x-api-path-slug: diagnosis-post
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Healthcare
+      - Diagnosis
+  /explain:
+    post:
+      summary: Post Explain
+      description: Explains which evidence impact probability of selected condition.
+      operationId: postExplain
+      x-api-path-slug: explain-post
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Healthcare
+      - Explain
+x-streamrank:
+  polling_total_time_average: 0
+  polling_size_download_average: 0
+  streaming_total_time_average: 0
+  streaming_size_download_average: 0
+  change_yes: 0
+  change_no: 0
+  time_percentage: 0
+  size_percentage: 0
+  change_percentage: 0
+  last_run: ""
+  days_run: 0
+  minute_run: 0
+---
